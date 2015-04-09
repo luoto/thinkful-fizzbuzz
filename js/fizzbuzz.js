@@ -1,23 +1,33 @@
-$('document').ready(function() {
-    var i = 1;
-    var iString;
+function fizzbuzzer(numIterations) {
+    var counter = 1;
 
-    while(i <= 100) {
+    while(counter <= numIterations) {
 
-        if (i % 3 != 0 && i % 5 != 0) {
-            $('ol').append('<li>' + i + '</li>');
+        if (counter % 3 != 0 && counter % 5 != 0) {
+            $('ol').append('<li>' + counter + '</li>');
         }
-        else if (i % 3 == 0 && i % 5 == 0) {
+        else if (counter % 3 == 0 && counter % 5 == 0) {
              $('ol').append('<li>fizz buzz</li>');
         }
-        else if (i % 3 == 0) {
+        else if (counter % 3 == 0) {
             $('ol').append('<li>fizz</li>');
         }
         else {
             $('ol').append('<li>buzz</li>');
         }
 
-        i++;
+        counter++;
     }
+}
+
+$('document').ready(function() {
+    var numIterations;
+
+    numIterations = +prompt('How far should we make fizzbuzz go?');
+    while(typeof(numIterations) != 'number' || numIterations % 1 != 0 ) {
+        numIterations = +prompt('Please enter an integer:');
+    }
+
+    fizzbuzzer(numIterations);
 
 });
